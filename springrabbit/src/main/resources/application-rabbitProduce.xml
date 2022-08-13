@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+				        http://www.springframework.org/schema/rabbit
+				        http://www.springframework.org/schema/rabbit/spring-rabbit-1.4.xsd">
+
+    <rabbit:connection-factory id="rabbitConnectionFactory" username="leellun" password="liulun666" host="192.168.10.103" port="5672"></rabbit:connection-factory>
+    <rabbit:admin connection-factory="rabbitConnectionFactory"/>
+    <rabbit:queue name="queue1" auto-delete="true" auto-declare="true" durable="true" exclusive="false" />
+    <rabbit:direct-exchange name="exchange1" durable="true" auto-declare="true" auto-delete="true" >
+        <rabbit:bindings>
+            <rabbit:binding key="aa" queue="queue1"></rabbit:binding>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+    <rabbit:template id="rabbitTemplate" connection-factory="rabbitConnectionFactory" exchange="exchange1"/>
+    <bean id="directConsumer" class="com.newland.springrabbit.DirectConsumer"/>
+    <rabbit:listener-container acknowledge="auto" connection-factory="rabbitConnectionFactory">
+        <rabbit:listener ref="directConsumer" queues="queue1" response-routing-key="aa"/>
+    </rabbit:listener-container>
+</beans>
