@@ -8,6 +8,10 @@ import com.rabbitmq.client.Connection;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 根据消息的headers来匹配对应的队列，在消息接收回调中指定headers， 可以是Map<String, Object>、String可变数组类型的keys等
+ *
+ */
 public class HeadersPublisher {
     public static void main(String[] args) throws Exception {
         Connection connection = RabbitMQConnectionUtil.getConnection();

@@ -3,7 +3,10 @@ package com.newland.rabbitmq.publisher;
 import com.newland.rabbitmq.RabbitMQConnectionUtil;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
-
+/**
+ * work模式
+ * 生产者——消息队列 ——消费者（多个）
+ */
 public class WorkPublisher {
     public static final String QUEUE_NAME="workqueue";
     public static void main(String[] args) throws Exception {

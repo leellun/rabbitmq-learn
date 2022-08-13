@@ -4,7 +4,10 @@ import com.newland.rabbitmq.RabbitMQConnectionUtil;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
-
+/**
+ * 基本模式：
+ *  生产者——消息队列 ——消费者
+ */
 public class SimpleConsumer {
     public static final String QUEUE_NAME = "sdfsdfsdfssf1";
 
