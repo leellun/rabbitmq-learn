@@ -1,6 +1,5 @@
 package com.newland.rabbitmq.advance.rabbitmqdelay07;
 
-import com.newland.rabbitmq.advance.rabbitexchnage02.ExchangeDlx;
 import com.newland.rabbitmq.utils.RabbitMQConnectionUtil;
 import com.rabbitmq.client.*;
 
@@ -9,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 延迟插件实现延迟任务
  * Author: leell
  * Date: 2022/10/5 01:40:58
  */
