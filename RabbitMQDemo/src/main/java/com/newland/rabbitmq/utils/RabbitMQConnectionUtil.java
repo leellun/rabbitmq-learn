@@ -23,4 +23,18 @@ public class RabbitMQConnectionUtil {
             return null;
         }
     }
+    public static Connection newConnection(String host,int port) {
+        ConnectionFactory factory = new ConnectionFactory();
+        factory.setUsername("leellun");
+        factory.setPassword("123456");
+        factory.setVirtualHost("/");
+        factory.setHost(host);
+        factory.setPort(port);
+        try {
+            Connection connection = factory.newConnection();
+            return connection;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }
